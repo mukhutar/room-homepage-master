@@ -1,38 +1,372 @@
-.App {
-  text-align: center;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+    width: 100%;
+    height: auto;
+    
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav-bar{
+    display: flex;
+    margin: 4em;
+    gap: 20%;
+    position: fixed;
+    z-index: 4;
+    
+    
+}
+.nav-bar > #bugger{
+    display: none;
+    position: relative;
+    top: 8px;
+    cursor: pointer;
+}
+.bugger > img:nth-child(1){
+    cursor: pointer;
+}
+.bugger > img:nth-child(2){
+    position: absolute;
+    right: 3px;
+    top: 2px;
+    cursor: pointer;
+}
+.nav-bar > img{
+    height: 2vh;
+    position: relative;
+    top: 10px;
+}
+.nav-bar > ul{
+    display: flex;
+    gap: 10%;
+    
+}
+ul > li{
+    list-style: none;
+    
+}
+li > a{
+    color: white;
+    text-decoration: none;
+    position: relative;
+ 
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+li > a::before{
+    content: "";
+    background-color: white;
+    height: 4px;
+    width: 40px;
+    position: absolute;
+    top: 2em;
+    scale: 0;
+    transition: scale 0.5s;
+    transform-origin: center;
 }
 
-.App-link {
-  color: #61dafb;
+li > a:hover::before{
+    scale: 1;
+    transform-origin: left;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* sliders js */
+
+.main{
+    display: flex;
+  
+    
+}
+
+.main > .image-content{
+    width: auto;
+    height: auto;
+}
+.image-content > img{
+    width: 100%;
+    height: 68vh;
+    object-fit: cover;
+}
+.main > .description{
+    background-color:  hsl(0, 0%, 100%);
+    width: 46%;
+    height: 68vh;
+    display: grid;
+    position: relative;
+    place-items: center;
+}
+
+.description > h1{
+    font-size: 47px;
+    position: absolute;
+    top: 1em;
+    font-family: 'League Spartan', sans-serif;
+    
+}
+.description > p{
+    color:  hsl(0, 0%, 63%);
+    font-size: 15px;
+    margin-right: 1.5em;
+
+}
+.description > section{
+    display: flex;
+    position: relative;
+    bottom: 5.5em;
+    right : 7.5em;
+    gap: 20px;
+}
+
+section  > label{
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: hsl(0, 0%, 0%);
+    cursor: pointer;
+
+}
+section  > label:hover{
+    color: hsl(0, 0%, 63%) ;
+    transition:  0.2s;
+}
+section > img{
+    cursor: pointer;
+}
+.main-content{
+    display: flex;
+    height: 2vh;
+    width: 100%;
+    position: relative;
+    bottom: 3.2em;
+    margin-top: 0;
+}
+ .main-image > img{
+    width: 100%;
+    height: 31.5vh;
+    object-fit: cover;    
+  
+}
+
+.main-content > .main-about{
+    background-color:hsl(0, 0%, 100%);
+    width: 60%;
+    display: grid;
+    place-items: center;
+    margin-top: 3em ;
+}
+.main-about > h1{
+    font-size: 17px;
+    position: relative;
+    right:7.5em;
+    letter-spacing: 3px;
+}
+
+.main-about > p{
+     position: relative;
+     right: 1.2em;
+     font-size: 14.5px;
+     top: 0.5em;
+    color:  hsl(0, 0%, 63%);
+}
+
+.triple{
+    display: none;
+    cursor: pointer;
+
+}
+
+
+.box{
+        display: block;
+        width: 23px;
+        height: 3px;
+        margin: 5px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        background-color: rgb(10, 10, 10);
+}
+
+@media (max-width:768px) {
+    .triple{
+        display: block;
+        position: fixed;
+        right: 22em;
+        top: 3em;
+        
+
+    }
+
+    .triple.active .box:nth-child(2){
+        opacity: 0;
+    }
+
+    .triple.active .box:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .triple.active .box:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .nav-menu{
+        position: fixed;
+        gap: 1px;
+         height: 14vh;
+        flex-direction: row;
+        background-color:white;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align:center;
+        transition: 0.5s;
+    }
+    .nav-menu.active{
+        top: -10%;
+    }
+
+
+    li >  a{
+        color: rgb(14, 13, 13);
+        text-decoration: none;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     
+    }
+    
+li > a::before{
+    content: "";
+    background-color: rgb(5, 5, 5);
+    height: 4px;
+    width: 40px;
+    position: absolute;
+    top: 2em;
+    scale: 0;
+    transition: scale 0.5s;
+    transform-origin: center;
+}
+
+li > a:hover::before{
+    scale: 1;
+    transform-origin: left;
+
+}
+
+
+    .nav-bar{
+        display: flex;
+        text-align: center;
+        margin: auto;
+        gap: 10%;
+        z-index: 4;
+        width: 100%;
+        height: 12vh;
+       
+        
+        
+    }
+    .nav-bar > img{
+        margin: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        left: 6.5em;
+        top: 2.5em;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        height: 90vh;
+    }
+    .main > .description{
+        background-color:  hsl(0, 0%, 100%);
+        width: 100%;
+        height: 68vh;
+        display: grid;
+        position: relative;
+        place-items: center;
+    }
+      
+.description > h1{
+    font-size: 37px;
+    position: absolute;
+    top: 1.8em;
+    font-family: 'League Spartan', sans-serif;
+    
+}
+.description > p{
+    color:  hsl(0, 0%, 63%);
+    font-size: 13px;
+    position: relative;
+    top: 30px;
+
+}
+.description > section{
+    display: flex;
+    position: relative;
+    bottom: 2em;
+    right : 4.5em;
+    gap: 20px;
+}
+
+section  > label{
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: hsl(0, 0%, 0%);
+    cursor: pointer;
+
+}
+.image-content > img{
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    bottom: 6em;
+    
+}
+.main-image{
+    margin-bottom: 5em;
+}
+
+.main-image > img{
+    width: 100%;
+    height: 40.5vh;
+    object-fit: cover; 
+}
+
+.main-content > .main-about{
+    background-color:hsl(0, 0%, 100%);
+    width: 100%;
+    position: relative;
+    bottom: 5em; 
+    display: grid;
+    place-items: center;
+}
+.main-about > h1{
+    font-size: 15px;
+    position: relative;
+    right: 55px;
+    letter-spacing: 3px;
+}
+
+.main-about > p{
+    color:  hsl(0, 0%, 63%);
+    font-size: 11px;
+    line-height: 20px;
+    position: relative;
+    top: 30px;
+    left: 8px;
+    
+}
+ 
 }
